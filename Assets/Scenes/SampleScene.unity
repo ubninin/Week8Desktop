@@ -1736,6 +1736,59 @@ Tilemap:
     e31: 0
     e32: 0
     e33: 1
+--- !u!1 &805990400
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 805990402}
+  - component: {fileID: 805990401}
+  m_Layer: 0
+  m_Name: EnemySpawnerR
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!114 &805990401
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 805990400}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 45d02d8438814f4469457b09944426ba, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  enemyPrefab: {fileID: 1387477978344842509, guid: 5d8ad765e8ce53541aaf033dd5f99039, type: 3}
+  spawnTime: 1.5
+  wayPoints:
+  - {fileID: 1768366985}
+  - {fileID: 856793664}
+  - {fileID: 236427500}
+  - {fileID: 1604429933}
+  - {fileID: 1626823551}
+  - {fileID: 1622913047}
+--- !u!4 &805990402
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 805990400}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1001 &852672992
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -2576,6 +2629,59 @@ Transform:
   m_CorrespondingSourceObject: {fileID: 2724137851131668970, guid: 0f157410325fefe48962bd10e71d621c, type: 3}
   m_PrefabInstance: {fileID: 573610692}
   m_PrefabAsset: {fileID: 0}
+--- !u!1 &1801052228
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1801052230}
+  - component: {fileID: 1801052229}
+  m_Layer: 0
+  m_Name: EnemySpawnerL
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!114 &1801052229
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1801052228}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 45d02d8438814f4469457b09944426ba, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  enemyPrefab: {fileID: 1387477978344842509, guid: 5d8ad765e8ce53541aaf033dd5f99039, type: 3}
+  spawnTime: 1
+  wayPoints:
+  - {fileID: 687639114}
+  - {fileID: 1163530665}
+  - {fileID: 1683274217}
+  - {fileID: 1730168329}
+  - {fileID: 923490307}
+  - {fileID: 162861906}
+--- !u!4 &1801052230
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1801052228}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &1937932496
 GameObject:
   m_ObjectHideFlags: 0
@@ -2638,7 +2744,7 @@ SpriteRenderer:
   m_SortingLayer: 0
   m_SortingOrder: 20
   m_Sprite: {fileID: 7482667652216324306, guid: 311925a002f4447b3a28927169b83ea6, type: 3}
-  m_Color: {r: 0, g: 0.5840707, b: 1, a: 1}
+  m_Color: {r: 0, g: 0.5840707, b: 1, a: 0.57254905}
   m_FlipX: 0
   m_FlipY: 0
   m_DrawMode: 0
@@ -2841,7 +2947,7 @@ SpriteRenderer:
   m_SortingLayer: 0
   m_SortingOrder: 22
   m_Sprite: {fileID: 7482667652216324306, guid: 311925a002f4447b3a28927169b83ea6, type: 3}
-  m_Color: {r: 0, g: 0.39027756, b: 0.6679245, a: 1}
+  m_Color: {r: 0, g: 0.39027756, b: 0.6679245, a: 0.87058824}
   m_FlipX: 0
   m_FlipY: 0
   m_DrawMode: 0
@@ -3009,3 +3115,5 @@ SceneRoots:
   - {fileID: 1937932498}
   - {fileID: 2068447585}
   - {fileID: 81734249}
+  - {fileID: 1801052230}
+  - {fileID: 805990402}
