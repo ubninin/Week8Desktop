@@ -7,12 +7,13 @@ public class Enemy : MonoBehaviour
     private int wayPointCount;
     private int currentIndex = 0;
     private Movement2D movement2D;
+    private EnemySpawner enemySpawner;
     //private EnemySpawner enemySpawner;
     //[SerializeField] private int gold = 10;
-    public void Setup(Transform[] wayPoints)
+    public void Setup(EnemySpawner enemySpawner, Transform[] wayPoints)
     {
         movement2D = GetComponent<Movement2D>();
-        //this.enemySpawner = enemySpawner;
+        this.enemySpawner = enemySpawner;
         wayPointCount = wayPoints.Length;
         this.wayPoints = new Transform[wayPointCount];
         this.wayPoints = wayPoints;
@@ -44,13 +45,14 @@ public class Enemy : MonoBehaviour
         }
         else
         {
-            Destroy(gameObject);
+            //Destroy(gameObject);
             //gold = 0;
-            //OnDie(EnemyDestroyType.Arrive);
+            OnDie();
         }
+        
     }
-    //public void OnDie(EnemyDestroyType type)
-    //{
-    //    enemySpawner.DestroyEnemy(type, this,gold);
-    //}
+    public void OnDie()
+    {
+        enemySpawner.DestroyEnemy(this);
+    }
 }

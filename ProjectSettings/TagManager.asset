@@ -6,6 +6,9 @@ TagManager:
   tags:
   - Platform
   - Water
+  - Tile
+  - Enemy
+  - PlatformObj
   layers:
   - Default
   - TransparentFX

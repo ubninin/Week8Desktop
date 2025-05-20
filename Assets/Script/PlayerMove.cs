@@ -90,6 +90,10 @@ public class PlayerMove : MonoBehaviour
         {
             jumpCount = 0;
         }
+        if (collision.gameObject.CompareTag("PlatformObj"))
+        {
+            jumpCount = 0;
+        }
         if (collision.gameObject.CompareTag("Water"))
         {
             Debug.Log("게임 오버");
