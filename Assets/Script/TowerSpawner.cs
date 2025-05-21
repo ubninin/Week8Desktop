@@ -3,7 +3,6 @@ using UnityEngine;
 public class TowerSpawner : MonoBehaviour
 {
     [SerializeField] private GameObject towerPrefab;
-    [SerializeField] private Transform gridTransform;
 
     public void SpawnTower(Transform tileTransform)
     {
@@ -19,8 +18,8 @@ public class TowerSpawner : MonoBehaviour
         // 타워가 건설되어 있음으로 설정
         tile.IsBuildTower = true;
 
-        // 선택한 타일의 위치에 타워 건설
+        // 선택한 타일의 위치에 타워 건설 (부모를 설정하지 않음)
         GameObject newTower = Instantiate(towerPrefab, tileTransform.position, Quaternion.identity);
-        newTower.transform.SetParent(gridTransform);
+        // newTower.transform.SetParent(gridTransform); // 이 줄을 제거했습니다.
     }
 }

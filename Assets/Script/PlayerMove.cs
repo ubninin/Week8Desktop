@@ -79,7 +79,7 @@ public class PlayerMove : MonoBehaviour
     {
         if (currentState != previousState)
         {
-            Debug.Log("현재 상태: " + currentState.ToString());
+            //Debug.Log("현재 상태: " + currentState.ToString());
             previousState = currentState;
         }
     }
@@ -88,6 +88,7 @@ public class PlayerMove : MonoBehaviour
     {
         if (collision.gameObject.CompareTag("Platform"))
         {
+            Debug.Log("쿵");
             jumpCount = 0;
         }
         if (collision.gameObject.CompareTag("PlatformObj"))
