@@ -2,14 +2,32 @@ using UnityEngine;
 
 public class Collision : MonoBehaviour
 {
+    private Tile tile; // 타워가 위치한 타일 참조
+
+    // 타워 생성 시 호출하여 타일 정보 저장
+    public void SetTile(Tile tile)
+    {
+        this.tile = tile;
+    }
+
     private void OnCollisionEnter2D(Collision2D collision)
     {
         if (collision.gameObject.CompareTag("Enemy"))
         {
             Debug.Log("monster die");
-            // 적 오브젝트와 충돌한 경우
-            collision.gameObject.GetComponent<Enemy>().OnDie();
-            Destroy(gameObject); // 자신의 오브젝트 삭제
+
+            if (tile != null)
+            {
+                tile.IsBuildTower = false; // 타일에 타워 없음 표시
+            }
+
+            Enemy enemy = collision.gameObject.GetComponent<Enemy>();
+            if (enemy != null)
+            {
+                enemy.OnDie();
+            }
+
+            Destroy(gameObject); // 타워 제거
         }
     }
 }

@@ -8,18 +8,23 @@ public class TowerSpawner : MonoBehaviour
     {
         Tile tile = tileTransform.GetComponent<Tile>();
 
-        // 타워 건설 가능 여부 확인
-        // 1. 현재 타일의 위치에 이미 타워가 건설되어 있으면 타워 건설 X
-        if (tile.IsBuildTower == true)
+        // 이미 타워가 있으면 건설 안 함
+        if (tile.IsBuildTower)
         {
             return;
         }
 
-        // 타워가 건설되어 있음으로 설정
+        // 타워 건설 표시
         tile.IsBuildTower = true;
 
-        // 선택한 타일의 위치에 타워 건설 (부모를 설정하지 않음)
+        // 타워 생성
         GameObject newTower = Instantiate(towerPrefab, tileTransform.position, Quaternion.identity);
-        // newTower.transform.SetParent(gridTransform); // 이 줄을 제거했습니다.
+
+        // ?? 이 부분이 핵심
+        Collision tower = newTower.GetComponent<Collision>();
+        if (tower != null)
+        {
+            tower.SetTile(tile); // 생성된 타워에게 타일 정보 전달
+        }
     }
 }

@@ -14,7 +14,7 @@ GameObject:
   - component: {fileID: 838120373973745081}
   - component: {fileID: 3079232768372473764}
   - component: {fileID: 506231955716330904}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: Enemy01
   m_TagString: Enemy
   m_Icon: {fileID: 0}
@@ -103,7 +103,7 @@ Rigidbody2D:
   m_Simulated: 1
   m_UseFullKinematicContacts: 0
   m_UseAutoMass: 0
-  m_Mass: 1
+  m_Mass: 111
   m_LinearDamping: 0
   m_AngularDamping: 0.05
   m_GravityScale: 0
