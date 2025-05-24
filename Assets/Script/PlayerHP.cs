@@ -22,7 +22,7 @@ public class PlayerHP : MonoBehaviour
     private void Awake()
     {
         currentHP = maxHP;
-        //UpdateHeartUI();
+        UpdateHeartUI();
     }
 
     public void TakeDamage(float damage)
@@ -34,7 +34,7 @@ public class PlayerHP : MonoBehaviour
         if (currentHP < 0)
             currentHP = 0;
 
-        //UpdateHeartUI();
+        UpdateHeartUI();
 
         if (currentHP <= 0)
         {
@@ -44,22 +44,22 @@ public class PlayerHP : MonoBehaviour
     }
 
     // 하트 UI 갱신
-    //private void UpdateHeartUI()
-    //{
-    //    int heartsToShow = Mathf.CeilToInt(currentHP); // 남은 하트 수 (정수로 변환)
+    private void UpdateHeartUI()
+    {
+        int heartsToShow = Mathf.CeilToInt(currentHP); // 남은 하트 수 (정수로 변환)
 
-    //    for (int i = 0; i < heartImages.Length; i++)
-    //    {
-    //        if (i < heartsToShow)
-    //        {
-    //            heartImages[i].enabled = true;  // 하트 보임
-    //        }
-    //        else
-    //        {
-    //            heartImages[i].enabled = false; // 하트 숨김
-    //        }
-    //    }
-    //}
+        for (int i = 0; i < heartImages.Length; i++)
+        {
+            if (i < heartsToShow)
+            {
+                heartImages[i].enabled = true;  // 하트 보임
+            }
+            else
+            {
+                heartImages[i].enabled = false; // 하트 숨김
+            }
+        }
+    }
 
     private IEnumerator HitAlphaAnimation()
     {
