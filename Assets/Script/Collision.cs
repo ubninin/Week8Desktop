@@ -10,9 +10,9 @@ public class Collision : MonoBehaviour
         this.tile = tile;
     }
 
-    private void OnCollisionEnter2D(Collision2D collision)
+    private void OnTriggerEnter2D(Collider2D other)
     {
-        if (collision.gameObject.CompareTag("Enemy"))
+        if (other.CompareTag("Enemy"))
         {
             Debug.Log("monster die");
 
@@ -21,7 +21,7 @@ public class Collision : MonoBehaviour
                 tile.IsBuildTower = false; // 타일에 타워 없음 표시
             }
 
-            Enemy enemy = collision.gameObject.GetComponent<Enemy>();
+            Enemy enemy = other.GetComponent<Enemy>();
             if (enemy != null)
             {
                 enemy.OnDie();
