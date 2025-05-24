@@ -47,8 +47,31 @@ public class EnemySpawner : MonoBehaviour
         }
         else if (type == EnemyDestroyType.Kill)
         {
-            playerGogi.CurrentGogi += gogi;
+            float chance = Random.value; // 0.0f ~ 1.0f 사이의 랜덤값
+
+            if (chance < 0.66f) // 66% 확률로 planks 지급
+            {
+                if (playerPlanks != null)
+                {
+                    playerPlanks.CurrentPlanks += 1;
+                    Debug.Log("판자를 얻었다");
+                }
+                else
+                    Debug.LogWarning("playerPlanks is null!");
+            }
+            else // 34% 확률로 gogi 지급
+            {
+                if (playerGogi != null)
+                {
+                    playerGogi.CurrentGogi +=1;
+                    Debug.Log("고기를 얻었다");
+                }
+                   
+                else
+                    Debug.LogWarning("playerGogi is null!");
+            }
         }
+
 
         enemyList.Remove(enemy);
         Destroy(enemy.gameObject);
