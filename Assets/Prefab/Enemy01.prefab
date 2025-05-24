@@ -11,6 +11,7 @@ GameObject:
   - component: {fileID: 3266965828780590132}
   - component: {fileID: 3235857137954736625}
   - component: {fileID: 8388192791035350925}
+  - component: {fileID: -5484946990080599427}
   - component: {fileID: 838120373973745081}
   - component: {fileID: 3079232768372473764}
   - component: {fileID: 506231955716330904}
@@ -81,7 +82,7 @@ SpriteRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 5
-  m_Sprite: {fileID: -2413806693520163455, guid: ebe73ca9363db456bacf42c025bb4847, type: 3}
+  m_Sprite: {fileID: 3314502090014141176, guid: 92429a225fb116348a5c70fab8e8820f, type: 3}
   m_Color: {r: 1, g: 0.8209398, b: 0, a: 1}
   m_FlipX: 0
   m_FlipY: 0
@@ -119,6 +120,110 @@ Rigidbody2D:
   m_SleepingMode: 1
   m_CollisionDetection: 0
   m_Constraints: 0
+--- !u!60 &-5484946990080599427
+PolygonCollider2D:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1387477978344842509}
+  m_Enabled: 1
+  serializedVersion: 3
+  m_Density: 1
+  m_Material: {fileID: 0}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_LayerOverridePriority: 0
+  m_ForceSendLayers:
+    serializedVersion: 2
+    m_Bits: 4294967295
+  m_ForceReceiveLayers:
+    serializedVersion: 2
+    m_Bits: 4294967295
+  m_ContactCaptureLayers:
+    serializedVersion: 2
+    m_Bits: 4294967295
+  m_CallbackLayers:
+    serializedVersion: 2
+    m_Bits: 4294967295
+  m_IsTrigger: 1
+  m_UsedByEffector: 0
+  m_CompositeOperation: 0
+  m_CompositeOrder: 0
+  m_Offset: {x: 0, y: 0}
+  m_SpriteTilingProperty:
+    border: {x: 0, y: 0, z: 0, w: 0}
+    pivot: {x: 0.5, y: 0.5}
+    oldSize: {x: 1.28, y: 1.28}
+    newSize: {x: 1, y: 1}
+    adaptiveTilingThreshold: 0.5
+    drawMode: 0
+    adaptiveTiling: 0
+  m_AutoTiling: 0
+  m_Points:
+    m_Paths:
+    - - {x: -0.04, y: 0.64}
+      - {x: -0.64, y: 0.04}
+      - {x: -0.64, y: -0.04}
+      - {x: -0.04, y: -0.64}
+      - {x: 0.049999997, y: -0.64}
+      - {x: 0.64, y: -0.14}
+      - {x: 0.64, y: 0.049999997}
+      - {x: 0.14, y: 0.64}
+    - - {x: -0.099999994, y: -0.42}
+      - {x: -0.08, y: -0.42999998}
+      - {x: -0.049999997, y: -0.39999998}
+      - {x: -0.049999997, y: -0.26}
+      - {x: -0.08, y: -0.22999999}
+      - {x: -0.22999999, y: -0.22999999}
+      - {x: -0.22999999, y: -0.08}
+      - {x: -0.26, y: -0.049999997}
+      - {x: -0.39999998, y: -0.049999997}
+      - {x: -0.42999998, y: -0.08}
+      - {x: -0.42, y: -0.099999994}
+      - {x: -0.52, y: 0}
+      - {x: -0.42, y: 0.099999994}
+      - {x: -0.42999998, y: 0.08}
+      - {x: -0.39999998, y: 0.049999997}
+      - {x: -0.26, y: 0.049999997}
+      - {x: -0.22999999, y: 0.08}
+      - {x: -0.22999999, y: 0.22999999}
+      - {x: -0.08, y: 0.22999999}
+      - {x: -0.049999997, y: 0.26}
+      - {x: -0.049999997, y: 0.39999998}
+      - {x: -0.08, y: 0.42999998}
+      - {x: -0.099999994, y: 0.42}
+      - {x: 0, y: 0.52}
+      - {x: 0.099999994, y: 0.42}
+      - {x: 0.08, y: 0.42999998}
+      - {x: 0.049999997, y: 0.39999998}
+      - {x: 0.049999997, y: 0.26}
+      - {x: 0.08, y: 0.22999999}
+      - {x: 0.22999999, y: 0.22999999}
+      - {x: 0.22999999, y: 0.08}
+      - {x: 0.26, y: 0.049999997}
+      - {x: 0.39999998, y: 0.049999997}
+      - {x: 0.42999998, y: 0.08}
+      - {x: 0.42, y: 0.099999994}
+      - {x: 0.52, y: 0}
+      - {x: 0.42, y: -0.099999994}
+      - {x: 0.42999998, y: -0.08}
+      - {x: 0.39999998, y: -0.049999997}
+      - {x: 0.26, y: -0.049999997}
+      - {x: 0.22999999, y: -0.08}
+      - {x: 0.22999999, y: -0.22999999}
+      - {x: 0.08, y: -0.22999999}
+      - {x: 0.049999997, y: -0.26}
+      - {x: 0.049999997, y: -0.39999998}
+      - {x: 0.08, y: -0.42999998}
+      - {x: 0.099999994, y: -0.42}
+      - {x: 0, y: -0.52}
+      - {x: 0, y: -0.51}
+  m_UseDelaunayMesh: 0
 --- !u!58 &838120373973745081
 CircleCollider2D:
   m_ObjectHideFlags: 0
@@ -126,7 +231,7 @@ CircleCollider2D:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1387477978344842509}
-  m_Enabled: 1
+  m_Enabled: 0
   serializedVersion: 3
   m_Density: 1
   m_Material: {fileID: 0}

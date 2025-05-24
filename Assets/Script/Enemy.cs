@@ -1,6 +1,8 @@
 using System.Collections;
 using UnityEngine;
-public enum EnemyDestroyType { Kill = 0, Arrive }
+
+public enum EnemyDestroyType { Kill = 0, Arrive, PlayerCollision }
+
 public class Enemy : MonoBehaviour
 {
     private Transform[] wayPoints;
@@ -8,14 +10,12 @@ public class Enemy : MonoBehaviour
     private int currentIndex = 0;
     private Movement2D movement2D;
     private EnemySpawner enemySpawner;
-    //private EnemySpawner enemySpawner;
-    //[SerializeField] private int gold = 10;
+
     public void Setup(EnemySpawner enemySpawner, Transform[] wayPoints)
     {
         movement2D = GetComponent<Movement2D>();
         this.enemySpawner = enemySpawner;
         wayPointCount = wayPoints.Length;
-        this.wayPoints = new Transform[wayPointCount];
         this.wayPoints = wayPoints;
         transform.position = wayPoints[currentIndex].position;
         StartCoroutine("OnMove");
@@ -45,14 +45,20 @@ public class Enemy : MonoBehaviour
         }
         else
         {
-            //Destroy(gameObject);
-            //gold = 0;
-            OnDie();
+            OnDie(EnemyDestroyType.Arrive);
         }
-        
     }
-    public void OnDie()
+
+    public void OnDie(EnemyDestroyType type)
     {
-        enemySpawner.DestroyEnemy(this);
+        enemySpawner.DestroyEnemy(type, this);
+    }
+
+    private void OnTriggerEnter2D(Collider2D collision)
+    {
+        if (collision.CompareTag("Player"))  // 플레이어 태그 확인
+        {
+            OnDie(EnemyDestroyType.PlayerCollision);
+        }
     }
 }

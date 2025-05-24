@@ -15,7 +15,7 @@ public class Collision : MonoBehaviour
     {
         if (other.CompareTag("Enemy"))
         {
-            Debug.Log("monster die");
+           
 
             if (tile != null)
             {

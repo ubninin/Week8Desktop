@@ -1,5 +1,3 @@
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 
 public class PlayerMove : MonoBehaviour
@@ -7,7 +5,7 @@ public class PlayerMove : MonoBehaviour
     public enum PlayerState { Walk, Run, Jump }
 
     private PlayerState currentState = PlayerState.Walk;
-    private PlayerState previousState = PlayerState.Walk; // 상태 변화 감지용
+    private PlayerState previousState = PlayerState.Walk;
 
     public float maxSpeed = 5f;
     public float runSpeedMultiplier = 2f;
@@ -20,30 +18,42 @@ public class PlayerMove : MonoBehaviour
 
     private Rigidbody2D rigid;
 
+    private float moveInput = 0f;
+    private bool jumpRequested = false;
+
     private void Awake()
     {
         rigid = GetComponent<Rigidbody2D>();
         originalMaxSpeed = maxSpeed;
+
+        // 충돌 감지 정확도 향상
+        rigid.collisionDetectionMode = CollisionDetectionMode2D.Continuous;
     }
 
     void Update()
     {
+        moveInput = Input.GetAxisRaw("Horizontal");
+
+        if (Input.GetButtonDown("Jump") && jumpCount < maxJumpCount)
+        {
+            jumpRequested = true;
+        }
+
         HandleStateChange();
-        LogStateChange(); // 상태가 바뀌었을 때 콘솔 출력
+        LogStateChange();
     }
 
     void FixedUpdate()
     {
+        HandleJump();
         HandleMovement();
     }
 
     void HandleStateChange()
     {
-        if (Input.GetButtonDown("Jump") && jumpCount < maxJumpCount)
+        if (jumpRequested)
         {
             currentState = PlayerState.Jump;
-            rigid.AddForce(Vector2.up * jumpPower, ForceMode2D.Impulse);
-            jumpCount++;
         }
         else if (Input.GetKey(KeyCode.LeftShift))
         {
@@ -55,50 +65,70 @@ public class PlayerMove : MonoBehaviour
         }
     }
 
+    void HandleJump()
+    {
+        if (jumpRequested)
+        {
+            rigid.linearVelocity = new Vector2(rigid.linearVelocity.x, 0f);
+            rigid.AddForce(Vector2.up * jumpPower, ForceMode2D.Impulse);
+            jumpCount++;
+            jumpRequested = false;
+        }
+    }
+
     void HandleMovement()
     {
-        float h = Input.GetAxisRaw("Horizontal");
-
         float speed = currentState switch
         {
             PlayerState.Walk => originalMaxSpeed,
             PlayerState.Run => originalMaxSpeed * runSpeedMultiplier,
-            PlayerState.Jump => maxSpeed,
+            PlayerState.Jump => originalMaxSpeed,
             _ => originalMaxSpeed
         };
 
-        rigid.AddForce(Vector2.right * h, ForceMode2D.Impulse);
-
-        if (rigid.linearVelocity.x > speed)
-            rigid.linearVelocity = new Vector2(speed, rigid.linearVelocity.y);
-        else if (rigid.linearVelocity.x < -speed)
-            rigid.linearVelocity = new Vector2(-speed, rigid.linearVelocity.y);
+        rigid.linearVelocity = new Vector2(moveInput * speed, rigid.linearVelocity.y);
     }
 
     void LogStateChange()
     {
         if (currentState != previousState)
         {
-            //Debug.Log("현재 상태: " + currentState.ToString());
             previousState = currentState;
         }
     }
 
     private void OnCollisionEnter2D(Collision2D collision)
     {
-        if (collision.gameObject.CompareTag("Platform"))
+        if (collision.gameObject.CompareTag("Platform") ||
+            collision.gameObject.CompareTag("PlatformObj") ||
+            collision.gameObject.CompareTag("Water"))
         {
-            Debug.Log("쿵");
+            if (collision.gameObject.CompareTag("Water"))
+                Debug.Log("game over (water)");
+
             jumpCount = 0;
         }
+    }
+
+    //  겹쳤을 때 위로 밀기
+    private void OnCollisionStay2D(Collision2D collision)
+    {
         if (collision.gameObject.CompareTag("PlatformObj"))
         {
-            jumpCount = 0;
-        }
-        if (collision.gameObject.CompareTag("Water"))
-        {
-            Debug.Log("게임 오버");
-            jumpCount = 0;
+            if (collision.contactCount > 0)
+            {
+                ContactPoint2D contact = collision.GetContact(0);
+                Vector2 penetrationDir = contact.normal;
+
+                float pushStrength = 0.1f;
+
+                // 아래 방향에서 밀리는 경우 → 위로 이동
+                if (penetrationDir.y <= 0.1f)
+                {
+                    transform.position += Vector3.up * pushStrength;
+                    rigid.linearVelocity = new Vector2(rigid.linearVelocity.x, 0.5f);
+                }
+            }
         }
     }
 }

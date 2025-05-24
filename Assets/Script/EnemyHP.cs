@@ -37,7 +37,7 @@ public class EnemyHP : MonoBehaviour
         if (currentHP <= 0)
         {
             isDie = true; // 적 캐릭터 사망
-            enemy.OnDie();
+            enemy.OnDie(EnemyDestroyType.Kill);
         }
     }
 
