@@ -29,7 +29,8 @@ public class PlayerHP : MonoBehaviour
     {
         currentHP -= damage;
         Debug.Log("한방맞음");
-
+        StopCoroutine("HitAlphaAnimation"); // 중복 방지
+        StartCoroutine("HitAlphaAnimation");
         // 체력 최소값 제한
         if (currentHP < 0)
             currentHP = 0;
