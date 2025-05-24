@@ -15,6 +15,8 @@ public class EnemySpawner : MonoBehaviour
     [SerializeField]
     private Transform[] wayPoints; // 현재 스테이지의 이동 경로
     [SerializeField] private PlayerHP playerHP;
+    [SerializeField] private PlayerGogi playerGogi;
+    [SerializeField] private PlayerPlanks playerPlanks;
     private List<Enemy> enemyList;
     public List<Enemy> EnemyList => enemyList;
     private void Awake()
@@ -37,13 +39,16 @@ public class EnemySpawner : MonoBehaviour
             yield return new WaitForSeconds(spawnTime); // spawnTime 시간 동안 대기
         }
     }
-    public void DestroyEnemy(EnemyDestroyType type, Enemy enemy)
+    public void DestroyEnemy(EnemyDestroyType type, Enemy enemy,int gogi, int planks)
     {
         if (type == EnemyDestroyType.PlayerCollision)
         {
             playerHP.TakeDamage(1);
         }
-
+        else if (type == EnemyDestroyType.Kill)
+        {
+            playerGogi.CurrentGogi += gogi;
+        }
 
         enemyList.Remove(enemy);
         Destroy(enemy.gameObject);

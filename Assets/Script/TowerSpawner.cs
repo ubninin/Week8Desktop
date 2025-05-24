@@ -3,15 +3,22 @@ using UnityEngine;
 public class TowerSpawner : MonoBehaviour
 {
     [SerializeField] private GameObject towerPrefab;
-
+    [SerializeField] private int towerBuildPlanks = 1;
+    [SerializeField] private EnemySpawner enemySpawner;
+    [SerializeField] private PlayerPlanks playerPlanks;
     // 플레이어와 충돌 체크할 Layer 설정 (플레이어 레이어 포함)
     [SerializeField] private LayerMask playerLayerMask;
 
     public void SpawnTower(Transform tileTransform)
     {
+        if (towerBuildPlanks > playerPlanks.CurrentPlanks)
+        {
+            Debug.Log("당신은 거지입니다");
+            return;
+        }
         Tile tile = tileTransform.GetComponent<Tile>();
 
-        if (tile.IsBuildTower)
+        if (tile.IsBuildTower == true)
             return;
 
         // **플레이어가 있는지 검사**
@@ -25,7 +32,7 @@ public class TowerSpawner : MonoBehaviour
         }
 
         tile.IsBuildTower = true;
-
+        playerPlanks.CurrentPlanks -= towerBuildPlanks;
         GameObject newTower = Instantiate(towerPrefab, tileTransform.position, Quaternion.identity);
 
         Collision tower = newTower.GetComponent<Collision>();
