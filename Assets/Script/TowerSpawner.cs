@@ -6,6 +6,8 @@ public class TowerSpawner : MonoBehaviour
     [SerializeField] private int towerBuildPlanks = 1;
     [SerializeField] private EnemySpawner enemySpawner;
     [SerializeField] private PlayerPlanks playerPlanks;
+    [SerializeField] private InventoryUI inventoryUI;
+
     // 플레이어와 충돌 체크할 Layer 설정 (플레이어 레이어 포함)
     [SerializeField] private LayerMask playerLayerMask;
 
@@ -33,6 +35,14 @@ public class TowerSpawner : MonoBehaviour
 
         tile.IsBuildTower = true;
         playerPlanks.CurrentPlanks -= towerBuildPlanks;
+        if (inventoryUI != null)
+        {
+            inventoryUI.RemoveItem(InventoryItemType.Planks);
+        }
+        else
+        {
+            Debug.LogWarning("inventoryUI가 할당되지 않았습니다.");
+        }
         GameObject newTower = Instantiate(towerPrefab, tileTransform.position, Quaternion.identity);
 
         Collision tower = newTower.GetComponent<Collision>();

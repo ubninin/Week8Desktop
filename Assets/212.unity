@@ -1517,6 +1517,7 @@ MonoBehaviour:
   towerBuildPlanks: 1
   enemySpawner: {fileID: 0}
   playerPlanks: {fileID: 1121107470}
+  inventoryUI: {fileID: 824304618}
   playerLayerMask:
     serializedVersion: 2
     m_Bits: 128
@@ -2599,6 +2600,7 @@ MonoBehaviour:
   gogiSprite: {fileID: -6742980198330016637, guid: 1c2b3f802d313d44d9916a3f0ddc932a, type: 3}
   planksSprite: {fileID: -7340594429859830501, guid: 1c7132977c8346a4fa2b7425c3f2073d, type: 3}
   shovelSprite: {fileID: -6818235362350405652, guid: d87db2b428a736e40af5ea4fdbc89d6d, type: 3}
+  playerPlanks: {fileID: 1121107470}
   slotParent: {fileID: 1360552808}
 --- !u!4 &824304619
 Transform:
@@ -3716,7 +3718,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: bedb59de549e82c4391a0288f44b3531, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  Planks: 3
+  Planks: 2
 --- !u!114 &1121107471
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -3729,7 +3731,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 1a8918fce06a39f4db8406d393db3ae0, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  Gogi: 0
+  Gogi: 2
 --- !u!1001 &1153606831
 PrefabInstance:
   m_ObjectHideFlags: 0
