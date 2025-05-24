@@ -1,5 +1,6 @@
 public enum InventoryItemType
 {
     Gogi,
-    Planks
+    Planks,
+    Shovel
 }

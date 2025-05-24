@@ -8,11 +8,16 @@ public class InventoryUI : MonoBehaviour
     [SerializeField] private GameObject slotPrefab;
     [SerializeField] private Sprite gogiSprite;
     [SerializeField] private Sprite planksSprite;
+    [SerializeField] private Sprite shovelSprite;
+
     [SerializeField] private Transform slotParent;
 
     private List<InventorySlot> slots = new List<InventorySlot>();
     private int maxSlots = 6;
-
+    private void Start()
+    {
+        AddItem(InventoryItemType.Shovel);
+    }
     private void Awake()
     {
         for (int i = 0; i < maxSlots; i++)
@@ -45,12 +50,10 @@ public class InventoryUI : MonoBehaviour
     {
         switch (type)
         {
-            case InventoryItemType.Gogi:
-                return gogiSprite;
-            case InventoryItemType.Planks:
-                return planksSprite;
-            default:
-                return null;
+            case InventoryItemType.Gogi: return gogiSprite;
+            case InventoryItemType.Planks: return planksSprite;
+            case InventoryItemType.Shovel: return shovelSprite;
+            default: return null;
         }
     }
 }
