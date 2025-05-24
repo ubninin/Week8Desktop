@@ -17,6 +17,7 @@ public class EnemySpawner : MonoBehaviour
     [SerializeField] private PlayerHP playerHP;
     [SerializeField] private PlayerGogi playerGogi;
     [SerializeField] private PlayerPlanks playerPlanks;
+    [SerializeField] private InventoryUI inventoryUI;
     private List<Enemy> enemyList;
     public List<Enemy> EnemyList => enemyList;
     private void Awake()
@@ -55,6 +56,7 @@ public class EnemySpawner : MonoBehaviour
                 {
                     playerPlanks.CurrentPlanks += 1;
                     Debug.Log("판자를 얻었다");
+                    inventoryUI.AddItem(InventoryItemType.Planks);
                 }
                 else
                     Debug.LogWarning("playerPlanks is null!");
@@ -65,6 +67,7 @@ public class EnemySpawner : MonoBehaviour
                 {
                     playerGogi.CurrentGogi +=1;
                     Debug.Log("고기를 얻었다");
+                    inventoryUI.AddItem(InventoryItemType.Gogi);
                 }
                    
                 else
