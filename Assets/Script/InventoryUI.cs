@@ -6,6 +6,7 @@ public class InventoryUI : MonoBehaviour
 {
     [SerializeField] private GameObject slotPrefab;
     [SerializeField] private Sprite gogiSprite;
+    [SerializeField] private Sprite pbSprite;
     [SerializeField] private Sprite planksSprite;
     [SerializeField] private Sprite shovelSprite;
     [SerializeField] private PlayerPlanks playerPlanks;
@@ -93,6 +94,7 @@ public class InventoryUI : MonoBehaviour
         switch (type)
         {
             case InventoryItemType.Gogi: return gogiSprite;
+            case InventoryItemType.Pb: return pbSprite;
             case InventoryItemType.Planks: return planksSprite;
             case InventoryItemType.Shovel: return shovelSprite;
             default: return null;

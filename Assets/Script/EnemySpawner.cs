@@ -16,6 +16,7 @@ public class EnemySpawner : MonoBehaviour
     private Transform[] wayPoints; // 현재 스테이지의 이동 경로
     [SerializeField] private PlayerHP playerHP;
     [SerializeField] private PlayerGogi playerGogi;
+    [SerializeField] private PlayerPb playerPb;
     [SerializeField] private PlayerPlanks playerPlanks;
     [SerializeField] private InventoryUI inventoryUI;
     private List<Enemy> enemyList;
@@ -40,7 +41,7 @@ public class EnemySpawner : MonoBehaviour
             yield return new WaitForSeconds(spawnTime); // spawnTime 시간 동안 대기
         }
     }
-    public void DestroyEnemy(EnemyDestroyType type, Enemy enemy,int gogi, int planks)
+    public void DestroyEnemy(EnemyDestroyType type, Enemy enemy,int gogi, int planks, int pb)
     {
         if (type == EnemyDestroyType.PlayerCollision)
         {
@@ -61,15 +62,27 @@ public class EnemySpawner : MonoBehaviour
                 else
                     Debug.LogWarning("playerPlanks is null!");
             }
+            else if (chance > 0.22f)//
+            {
+                if (playerPb != null)
+                {
+                    playerPb.CurrentPb += 1;
+                    Debug.Log("고기를 얻었다");
+                    inventoryUI.AddItem(InventoryItemType.Pb);
+                }
+
+                else
+                    Debug.LogWarning("playerPb is null!");
+            }
             else // 34% 확률로 gogi 지급
             {
                 if (playerGogi != null)
                 {
-                    playerGogi.CurrentGogi +=1;
+                    playerGogi.CurrentGogi += 1;
                     Debug.Log("고기를 얻었다");
                     inventoryUI.AddItem(InventoryItemType.Gogi);
                 }
-                   
+
                 else
                     Debug.LogWarning("playerGogi is null!");
             }

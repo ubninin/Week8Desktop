@@ -41,6 +41,12 @@ public class InventorySlot : MonoBehaviour
                 playerHP.Heal(1);
                 Clear();
             }
+            else if (CurrentItemType == InventoryItemType.Pb)
+            {
+                shovelAttack.EquipShovel(false);
+
+                Clear(); // 일단 클릭했을때 버리기
+            }
             else
             {
                 shovelAttack.EquipShovel(false);

@@ -12,6 +12,7 @@ public class Enemy : MonoBehaviour
     private EnemySpawner enemySpawner;
     [SerializeField] private int gogi = 10;
     [SerializeField] private int planks = 10;
+    [SerializeField] private int pb = 10;
 
     public void Setup(EnemySpawner enemySpawner, Transform[] wayPoints)
     {
@@ -49,6 +50,7 @@ public class Enemy : MonoBehaviour
         {
             gogi = 0;
             planks = 0;
+            pb = 0;
             OnDie(EnemyDestroyType.Arrive);
         }
     }
@@ -61,7 +63,7 @@ public class Enemy : MonoBehaviour
             return;
         }
 
-        enemySpawner.DestroyEnemy(type, this, gogi, planks);
+        enemySpawner.DestroyEnemy(type, this, gogi, planks, pb);
     }
 
     private void OnTriggerEnter2D(Collider2D collision)
