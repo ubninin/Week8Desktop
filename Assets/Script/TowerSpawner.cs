@@ -1,3 +1,4 @@
+using Mono.Cecil;
 using UnityEngine;
 
 public class TowerSpawner : MonoBehaviour
@@ -7,15 +8,27 @@ public class TowerSpawner : MonoBehaviour
     [SerializeField] private EnemySpawner enemySpawner;
     [SerializeField] private PlayerPlanks playerPlanks;
     [SerializeField] private InventoryUI inventoryUI;
+    private bool isOnTowerButton = false;
 
     // 플레이어와 충돌 체크할 Layer 설정 (플레이어 레이어 포함)
     [SerializeField] private LayerMask playerLayerMask;
-
-    public void SpawnTower(Transform tileTransform)
+    public void ReadyToSpawnTower()
     {
+
         if (towerBuildPlanks > playerPlanks.CurrentPlanks)
         {
             Debug.Log("당신은 거지입니다");
+            return;
+        }
+        isOnTowerButton = true;
+        Debug.Log("설치한다");
+        //followTowerClone = Instantiate(towerTemplate[towerType].followTowerPrefab);
+        //StartCoroutine("OnTowerCancelSystem");
+    }
+    public void SpawnTower(Transform tileTransform)
+    {
+        if (isOnTowerButton == false)
+        {
             return;
         }
         Tile tile = tileTransform.GetComponent<Tile>();
@@ -32,7 +45,7 @@ public class TowerSpawner : MonoBehaviour
             Debug.Log("플레이어가 있어서 타워를 설치할 수 없습니다!");
             return; // 플레이어가 있으면 설치 안 함
         }
-
+        isOnTowerButton = false;
         tile.IsBuildTower = true;
         playerPlanks.CurrentPlanks -= towerBuildPlanks;
         if (inventoryUI != null)
