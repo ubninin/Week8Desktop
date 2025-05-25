@@ -6,7 +6,7 @@ public class PlayerHP : MonoBehaviour
 {
     [SerializeField]
     private Image imageScreen;
-
+    [SerializeField] private GameObject gameOverPanel;
     [SerializeField]
     private float maxHP = 20;  // 최대 체력
 
@@ -39,6 +39,8 @@ public class PlayerHP : MonoBehaviour
 
         if (currentHP <= 0)
         {
+            gameOverPanel.SetActive(true);
+            Time.timeScale = 0f;
             Debug.Log("game over(hp)");
             // 게임오버 처리 코드 작성
         }

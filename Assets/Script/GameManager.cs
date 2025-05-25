@@ -31,6 +31,7 @@ public class GameManager : MonoBehaviour
         {
             isGameCleared = true;
             endingText.gameObject.SetActive(true);
+            Time.timeScale = 0f;
         }
     }
 
