@@ -9,6 +9,7 @@ public class InventoryUI : MonoBehaviour
     [SerializeField] private Sprite planksSprite;
     [SerializeField] private Sprite shovelSprite;
     [SerializeField] private PlayerPlanks playerPlanks;
+    [SerializeField] private TowerSpawner towerSpawner;
 
     [SerializeField] private Transform slotParent;
 
@@ -22,9 +23,11 @@ public class InventoryUI : MonoBehaviour
             GameObject slotObj = Instantiate(slotPrefab, slotParent);
             InventorySlot slot = slotObj.GetComponent<InventorySlot>();
             slot.Clear();
+            slot.Init(towerSpawner); //  여기서 연결!
             slots.Add(slot);
         }
     }
+
 
     private void Start()
     {
