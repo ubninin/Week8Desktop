@@ -15,12 +15,37 @@ public class ShovelAttack : MonoBehaviour
     private float maxAngle = -90f;
     private bool hitRegistered = false;
     private Tile tile; // 타워가 위치한 타일 참조
+    private bool isShovelEquipped = false;
+    public GameObject shovelVisual;
+    public void EquipShovel(bool equip)
+    {
+        Debug.Log("삽 장착됨");
+        shovelVisual.SetActive(true);
+        isShovelEquipped = equip;
+        shovelPivot.gameObject.SetActive(equip);
+        if (shovelPivot != null)
+        {
+            shovelPivot.gameObject.SetActive(equip);  // 삽만 활성화/비활성화
+        }
+        else
+        {
+            Debug.LogWarning("shovelPivot이 할당되지 않았습니다!");
+        }
+    }
+
+
     public void SetTile(Tile tile)
     {
         this.tile = tile;
     }
     void Update()
     {
+        if (!isShovelEquipped)
+        {
+            //Debug.Log("장착안됨");
+            
+            return;  // 삽이 장착되지 않았으면 공격 무시
+        }
 
         if (Input.GetKeyDown(KeyCode.Return) && !isAttacking)
         {
@@ -29,6 +54,7 @@ public class ShovelAttack : MonoBehaviour
             attackTimer = 0f;
             hitRegistered = false;
         }
+
 
         if (isAttacking)
         {

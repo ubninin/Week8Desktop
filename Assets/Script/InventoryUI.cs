@@ -12,6 +12,7 @@ public class InventoryUI : MonoBehaviour
     [SerializeField] private TowerSpawner towerSpawner;
     [SerializeField] private PlayerAttack playerAttack;
     [SerializeField] private PlayerHP playerHP;  // ??추가
+    [SerializeField] private ShovelAttack shovelAttack; // 기존 PlayerAttack 대체
 
     [SerializeField] private Transform slotParent;
 
@@ -27,7 +28,7 @@ public class InventoryUI : MonoBehaviour
             slot.Clear();
 
             // ?? playerHP 포함
-            slot.Init(towerSpawner, playerAttack, playerHP);
+            slot.Init(towerSpawner, shovelAttack, playerHP);  // Init 호출 시도 수정
 
             slots.Add(slot);
         }

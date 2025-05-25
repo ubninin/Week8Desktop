@@ -949,7 +949,7 @@ SpriteRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 1
-  m_Sprite: {fileID: 7482667652216324306, guid: 311925a002f4447b3a28927169b83ea6, type: 3}
+  m_Sprite: {fileID: 4334783836991956000, guid: 61aee791614202244931fd67b76e45de, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
   m_FlipY: 0
@@ -1014,7 +1014,7 @@ BoxCollider2D:
   m_SpriteTilingProperty:
     border: {x: 0, y: 0, z: 0, w: 0}
     pivot: {x: 0.5, y: 0.5}
-    oldSize: {x: 1, y: 1}
+    oldSize: {x: 1.01, y: 1.01}
     newSize: {x: 1, y: 1}
     adaptiveTilingThreshold: 0.5
     drawMode: 0
@@ -1071,7 +1071,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   shovelPivot: {fileID: 1471417708}
-  shovelVisual: {fileID: 698021935}
   swingAngle: 90
   swingSpeed: 360
   obstacleLayer:
@@ -1099,6 +1098,7 @@ MonoBehaviour:
     m_Bits: 256
   attackRange: 2
   enemyTag: Enemy
+  shovelVisual: {fileID: 698021935}
 --- !u!114 &179282978
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -2913,6 +2913,7 @@ MonoBehaviour:
   towerSpawner: {fileID: 432072028}
   playerAttack: {fileID: 179282975}
   playerHP: {fileID: 1121107468}
+  shovelAttack: {fileID: 179282977}
   slotParent: {fileID: 1360552808}
 --- !u!4 &824304619
 Transform:

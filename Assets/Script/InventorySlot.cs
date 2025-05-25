@@ -8,16 +8,18 @@ public class InventorySlot : MonoBehaviour
 
     private TowerSpawner towerSpawner;
     private PlayerAttack playerAttack;
+    private ShovelAttack shovelAttack;
+
     private PlayerHP playerHP;  // ??추가
 
     public InventoryItemType CurrentItemType { get; private set; } = InventoryItemType.None;
 
     // ??Init 함수 수정
-    public void Init(TowerSpawner spawner, PlayerAttack attack, PlayerHP hp)
+    public void Init(TowerSpawner spawner, ShovelAttack attack, PlayerHP hp)
     {
         towerSpawner = spawner;
-        playerAttack = attack;
-        playerHP = hp;  // ??할당
+        shovelAttack = attack;
+        playerHP = hp;
 
         button.onClick.RemoveAllListeners();
         button.onClick.AddListener(() =>
@@ -25,24 +27,27 @@ public class InventorySlot : MonoBehaviour
             if (CurrentItemType == InventoryItemType.Planks)
             {
                 towerSpawner.ReadyToSpawnTower();
-                playerAttack.EquipShovel(false);
+                shovelAttack.EquipShovel(false);  // 삽 비활성화
             }
             else if (CurrentItemType == InventoryItemType.Shovel)
             {
-                playerAttack.EquipShovel(true);
+                Debug.Log("삽 아이템 클릭됨"); // ? 확인용 로그
+                shovelAttack.EquipShovel(true);   // 삽 활성화
             }
+
             else if (CurrentItemType == InventoryItemType.Gogi)
             {
-                playerAttack.EquipShovel(false);
-                playerHP.Heal(1);  // ??고기 클릭 시 체력 1 회복
+                shovelAttack.EquipShovel(false);
+                playerHP.Heal(1);
                 Clear();
             }
             else
             {
-                playerAttack.EquipShovel(false);
+                shovelAttack.EquipShovel(false);
             }
         });
     }
+
 
     public void SetItem(Sprite itemSprite, InventoryItemType type)
     {

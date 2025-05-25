@@ -1,3 +1,4 @@
+using Unity.VisualScripting;
 using UnityEngine;
 using UnityEngine.UI;
 
@@ -5,13 +6,13 @@ public class InventorySlotUI : MonoBehaviour
 {
     [SerializeField] private Button button;
     private TowerSpawner towerSpawner;
-    private ShovelController shovelController;
+    private ShovelAttack shovelAttack;
     private PlayerHP playerHP;  // 추가
 
-    public void Init(TowerSpawner spawner, ShovelController shovel, PlayerHP hp)
+    public void Init(TowerSpawner spawner, ShovelAttack shovel, PlayerHP hp)
     {
         towerSpawner = spawner;
-        shovelController = shovel;
+        shovelAttack = shovel;
         playerHP = hp;  // 할당
 
         button.onClick.RemoveAllListeners();
@@ -20,7 +21,7 @@ public class InventorySlotUI : MonoBehaviour
             towerSpawner.ReadyToSpawnTower();
 
             // 삽 장착
-            shovelController.EquipShovel();
+            shovelAttack.EquipShovel(true);
 
             // 체력 1 회복
             playerHP.Heal(1f);

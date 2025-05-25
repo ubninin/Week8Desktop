@@ -3,7 +3,7 @@ using UnityEngine;
 public class ShovelController : MonoBehaviour
 {
     public Transform shovelPivot;
-    public GameObject shovelVisual;
+    
 
     public float swingAngle = 90f;
     public float swingSpeed = 360f;
@@ -20,15 +20,17 @@ public class ShovelController : MonoBehaviour
     void Start()
     {
         initialRotation = shovelPivot.localRotation;
-        shovelVisual.SetActive(false);
+        //shovelVisual.SetActive(false);
     }
 
     void Update()
     {
         if (!isEquipped) return;
+        //shovelVisual.SetActive(true);
 
         if (Input.GetKeyDown(KeyCode.Return) && !isSwinging)
         {
+
             isSwinging = true;
             currentAngle = 0f;
             hitRegistered = false;  // 공격 판정 리셋
@@ -55,17 +57,5 @@ public class ShovelController : MonoBehaviour
 
 
 
-    public void EquipShovel()
-    {
-        isEquipped = true;
-        shovelVisual.SetActive(true);
-    }
 
-    public void UnequipShovel()
-    {
-        isEquipped = false;
-        shovelVisual.SetActive(false);
-        shovelPivot.localRotation = initialRotation;
-        isSwinging = false;
-    }
 }
