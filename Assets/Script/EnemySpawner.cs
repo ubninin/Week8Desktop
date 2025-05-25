@@ -9,8 +9,8 @@ public class EnemySpawner : MonoBehaviour
     [SerializeField] private GameObject enemyHPSliderPrefab;
     [SerializeField] private Transform canvasTransform;
 
-    [SerializeField]
-    private float spawnTime; // 적 생성 주기
+    [SerializeField] private float minSpawnTime = 1f;
+    [SerializeField] private float maxSpawnTime = 3f;
 
     [SerializeField]
     private Transform[] wayPoints; // 현재 스테이지의 이동 경로
@@ -42,8 +42,9 @@ public class EnemySpawner : MonoBehaviour
             enemy.Setup(this,wayPoints); // wayPoint 정보를 매개변수로 Setup() 호출
             enemyList.Add(enemy);
             SpawnEnemyHPSlider(clone);
-            
-            yield return new WaitForSeconds(spawnTime); // spawnTime 시간 동안 대기
+
+            yield return new WaitForSeconds(Random.Range(minSpawnTime, maxSpawnTime));
+
         }
     }
     public void DestroyEnemy(EnemyDestroyType type, Enemy enemy,int gogi, int planks, int pb, int battery, int tape, int mt)
@@ -147,7 +148,7 @@ public class EnemySpawner : MonoBehaviour
 
         // 계층 설정으로 바뀐 크기를 다시 (1, 1, 1)로 설정
         sliderClone.transform.localScale = Vector3.one;
-
+        sliderClone.transform.SetSiblingIndex(0); // << 이 줄 추가
         // Slider UI가 쫓아다닐 대상을 본인으로 설정
         sliderClone.GetComponent<SliderPositionAutoSetter>().Setup(enemy.transform);
 

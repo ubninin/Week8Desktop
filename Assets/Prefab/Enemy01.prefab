@@ -219,7 +219,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 54010a31427dc4d4185eaf80835c5a2a, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  moveSpeed: 2
+  minMoveSpeed: 1
+  maxMoveSpeed: 2
   moveDirection: {x: 0, y: 0, z: 0}
 --- !u!114 &506231955716330904
 MonoBehaviour:
@@ -235,6 +236,10 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   gogi: 10
   planks: 10
+  pb: 10
+  battery: 10
+  tape: 10
+  mt: 10
 --- !u!114 &-5965815248387402472
 MonoBehaviour:
   m_ObjectHideFlags: 0

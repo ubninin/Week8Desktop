@@ -22,7 +22,18 @@ public class InventorySlot : MonoBehaviour, IBeginDragHandler, IDragHandler, IEn
     public static int TapeCount = 0;
     public static int MtCount = 0;
     public static int PlanksCount = 0;
-
+    public static void Reset()
+    {
+        PbCount = 0;
+        BatteryCount = 0;
+        TapeCount = 0;
+        MtCount = 0;
+        PlanksCount = 0;
+    }
+    void Start()
+    {
+        InventorySlot.Reset(); // 씬 시작 시 초기화
+    }
 
     public InventoryItemType CurrentItemType { get; private set; } = InventoryItemType.None;
 

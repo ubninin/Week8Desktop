@@ -56,6 +56,12 @@ public class GameTimer : MonoBehaviour
         int seconds = Mathf.FloorToInt(currentTime % 60f);
         timerText.text = string.Format("{0:00}:{1:00}", minutes, seconds);
     }
+    public string GetFormattedTime()
+    {
+        int minutes = Mathf.FloorToInt(currentTime / 60f);
+        int seconds = Mathf.FloorToInt(currentTime % 60f);
+        return string.Format("{0:00}:{1:00}", minutes, seconds);
+    }
 
     // 외부 조작 함수
     public void StopTimer() => isRunning = false;
