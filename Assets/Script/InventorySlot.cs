@@ -10,18 +10,32 @@ public class InventorySlot : MonoBehaviour
 
     public InventoryItemType CurrentItemType { get; private set; } = InventoryItemType.None;
 
-    public void Init(TowerSpawner spawner)
+    private PlayerAttack playerAttack; // Ãß°¡
+
+    public void Init(TowerSpawner spawner, PlayerAttack attack)
     {
         towerSpawner = spawner;
+        playerAttack = attack;
+
         button.onClick.RemoveAllListeners();
         button.onClick.AddListener(() =>
         {
             if (CurrentItemType == InventoryItemType.Planks)
             {
                 towerSpawner.ReadyToSpawnTower();
+                playerAttack.EquipShovel(false); // »ğ ÀåÂø ÇØÁ¦
+            }
+            else if (CurrentItemType == InventoryItemType.Shovel)
+            {
+                playerAttack.EquipShovel(true); // »ğ ÀåÂø
+            }
+            else
+            {
+                playerAttack.EquipShovel(false); // »ğ ÀåÂø ÇØÁ¦
             }
         });
     }
+
 
     public void SetItem(Sprite itemSprite, InventoryItemType type)
     {

@@ -3,8 +3,9 @@ using UnityEngine;
 public class PlayerMove : MonoBehaviour
 {
     [SerializeField] private GameObject gameOverPanel;
+    [SerializeField] private Transform shovelPivot; // Player 자식인 ShovelPivot 참조
     public enum PlayerState { Walk, Run, Jump }
-
+    private bool isFacingRight = true;
     private PlayerState currentState = PlayerState.Walk;
     private PlayerState previousState = PlayerState.Walk;
 
@@ -35,6 +36,16 @@ public class PlayerMove : MonoBehaviour
     {
         moveInput = Input.GetAxisRaw("Horizontal");
 
+        if (moveInput > 0 && !isFacingRight)
+        {
+            FlipShovel(true);
+        }
+        else if (moveInput < 0 && isFacingRight)
+        {
+            FlipShovel(false);
+        }
+        moveInput = Input.GetAxisRaw("Horizontal");
+
         if (Input.GetButtonDown("Jump") && jumpCount < maxJumpCount)
         {
             jumpRequested = true;
@@ -48,6 +59,13 @@ public class PlayerMove : MonoBehaviour
     {
         HandleJump();
         HandleMovement();
+    }
+    void FlipShovel(bool faceRight)
+    {
+        isFacingRight = faceRight;
+        Vector3 scale = shovelPivot.localScale;
+        scale.x = faceRight ? 0.3f : -0.3f;
+        shovelPivot.localScale = scale;
     }
 
     void HandleStateChange()
