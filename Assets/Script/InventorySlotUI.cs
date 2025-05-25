@@ -5,19 +5,25 @@ public class InventorySlotUI : MonoBehaviour
 {
     [SerializeField] private Button button;
     private TowerSpawner towerSpawner;
-    private ShovelController shovelController;  // 추가
+    private ShovelController shovelController;
+    private PlayerHP playerHP;  // 추가
 
-    public void Init(TowerSpawner spawner, ShovelController shovel)
+    public void Init(TowerSpawner spawner, ShovelController shovel, PlayerHP hp)
     {
         towerSpawner = spawner;
-        shovelController = shovel;  // 할당
+        shovelController = shovel;
+        playerHP = hp;  // 할당
+
         button.onClick.RemoveAllListeners();
         button.onClick.AddListener(() =>
         {
             towerSpawner.ReadyToSpawnTower();
 
-            // 삽 장착 상태 켜기
+            // 삽 장착
             shovelController.EquipShovel();
+
+            // 체력 1 회복
+            playerHP.Heal(1f);
         });
     }
 }

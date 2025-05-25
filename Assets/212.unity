@@ -2911,8 +2911,9 @@ MonoBehaviour:
   shovelSprite: {fileID: -348529364243123960, guid: 6213bc92c28f56944b4d1bafd4d899c5, type: 3}
   playerPlanks: {fileID: 1121107470}
   towerSpawner: {fileID: 432072028}
-  slotParent: {fileID: 1360552808}
   playerAttack: {fileID: 179282975}
+  playerHP: {fileID: 1121107468}
+  slotParent: {fileID: 1360552808}
 --- !u!4 &824304619
 Transform:
   m_ObjectHideFlags: 0

@@ -61,6 +61,14 @@ public class PlayerHP : MonoBehaviour
             }
         }
     }
+    public void Heal(float amount)
+    {
+        currentHP += amount;
+        if (currentHP > maxHP)
+            currentHP = maxHP;
+
+        UpdateHeartUI();
+    }
 
     private IEnumerator HitAlphaAnimation()
     {

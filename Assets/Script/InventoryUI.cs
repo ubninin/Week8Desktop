@@ -10,30 +10,28 @@ public class InventoryUI : MonoBehaviour
     [SerializeField] private Sprite shovelSprite;
     [SerializeField] private PlayerPlanks playerPlanks;
     [SerializeField] private TowerSpawner towerSpawner;
+    [SerializeField] private PlayerAttack playerAttack;
+    [SerializeField] private PlayerHP playerHP;  // ??추가
 
     [SerializeField] private Transform slotParent;
 
     private List<InventorySlot> slots = new List<InventorySlot>();
     private int maxSlots = 6;
-    [SerializeField] private PlayerAttack playerAttack; // 추가
 
     private void Awake()
     {
-        if (Input.anyKeyDown)
-        {
-            // 아무 키 입력에도 인벤토리는 반응하지 않음
-            return;
-        }
         for (int i = 0; i < maxSlots; i++)
         {
             GameObject slotObj = Instantiate(slotPrefab, slotParent);
             InventorySlot slot = slotObj.GetComponent<InventorySlot>();
             slot.Clear();
-            slot.Init(towerSpawner, playerAttack); // 수정
+
+            // ?? playerHP 포함
+            slot.Init(towerSpawner, playerAttack, playerHP);
+
             slots.Add(slot);
         }
     }
-
 
     private void Start()
     {

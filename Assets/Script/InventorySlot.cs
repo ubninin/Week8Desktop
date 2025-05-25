@@ -4,18 +4,20 @@ using UnityEngine.UI;
 public class InventorySlot : MonoBehaviour
 {
     [SerializeField] private Image itemImage;
-    [SerializeField] private Button button; // 버튼 참조 추가
+    [SerializeField] private Button button;
 
     private TowerSpawner towerSpawner;
+    private PlayerAttack playerAttack;
+    private PlayerHP playerHP;  // ??추가
 
     public InventoryItemType CurrentItemType { get; private set; } = InventoryItemType.None;
 
-    private PlayerAttack playerAttack; // 추가
-
-    public void Init(TowerSpawner spawner, PlayerAttack attack)
+    // ??Init 함수 수정
+    public void Init(TowerSpawner spawner, PlayerAttack attack, PlayerHP hp)
     {
         towerSpawner = spawner;
         playerAttack = attack;
+        playerHP = hp;  // ??할당
 
         button.onClick.RemoveAllListeners();
         button.onClick.AddListener(() =>
@@ -23,19 +25,24 @@ public class InventorySlot : MonoBehaviour
             if (CurrentItemType == InventoryItemType.Planks)
             {
                 towerSpawner.ReadyToSpawnTower();
-                playerAttack.EquipShovel(false); // 삽 장착 해제
+                playerAttack.EquipShovel(false);
             }
             else if (CurrentItemType == InventoryItemType.Shovel)
             {
-                playerAttack.EquipShovel(true); // 삽 장착
+                playerAttack.EquipShovel(true);
+            }
+            else if (CurrentItemType == InventoryItemType.Gogi)
+            {
+                playerAttack.EquipShovel(false);
+                playerHP.Heal(1);  // ??고기 클릭 시 체력 1 회복
+                Clear();
             }
             else
             {
-                playerAttack.EquipShovel(false); // 삽 장착 해제
+                playerAttack.EquipShovel(false);
             }
         });
     }
-
 
     public void SetItem(Sprite itemSprite, InventoryItemType type)
     {
