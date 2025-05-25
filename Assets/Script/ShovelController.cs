@@ -34,7 +34,8 @@ public class ShovelController : MonoBehaviour
             isSwinging = true;
             currentAngle = 0f;
             hitRegistered = false;  // 공격 판정 리셋
-            Debug.Log("휘둘시작");
+        
+
         }
 
         if (isSwinging)
@@ -50,7 +51,8 @@ public class ShovelController : MonoBehaviour
             {
                 isSwinging = false;
                 shovelPivot.localRotation = initialRotation;
-                Debug.Log("휘두르기 완료");
+              
+
             }
         }
     }

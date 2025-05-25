@@ -49,7 +49,8 @@ public class ShovelAttack : MonoBehaviour
 
         if (Input.GetKeyDown(KeyCode.Return) && !isAttacking)
         {
-            Debug.Log("»ð °ø°Ý ½ÃÀÛ");
+          
+
             isAttacking = true;
             attackTimer = 0f;
             hitRegistered = false;
@@ -75,7 +76,8 @@ public class ShovelAttack : MonoBehaviour
             {
                 isAttacking = false;
                 shovelPivot.localRotation = Quaternion.identity;
-                Debug.Log("»ð °ø°Ý Á¾·á");
+         
+
             }
         }
     }
@@ -111,7 +113,7 @@ public class ShovelAttack : MonoBehaviour
                 }
 
                 Destroy(hit.gameObject);
-                Debug.Log("ÀûÀÌ ¾Æ´Ô ¡æ ÆÄ±«");
+          
             }
 
         }

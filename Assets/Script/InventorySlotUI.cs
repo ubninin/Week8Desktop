@@ -16,6 +16,7 @@ public class InventorySlotUI : MonoBehaviour
         playerHP = hp;  // 할당
 
         button.onClick.RemoveAllListeners();
+        //버튼 눌렀을 때 동작들
         button.onClick.AddListener(() =>
         {
             towerSpawner.ReadyToSpawnTower();

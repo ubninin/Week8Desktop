@@ -13,6 +13,9 @@ public class Enemy : MonoBehaviour
     [SerializeField] private int gogi = 10;
     [SerializeField] private int planks = 10;
     [SerializeField] private int pb = 10;
+    [SerializeField] private int battery = 10;
+    [SerializeField] private int tape = 10;
+    [SerializeField] private int mt = 10;
 
     public void Setup(EnemySpawner enemySpawner, Transform[] wayPoints)
     {
@@ -51,6 +54,9 @@ public class Enemy : MonoBehaviour
             gogi = 0;
             planks = 0;
             pb = 0;
+            battery = 0;
+            tape = 0;
+            mt = 0;
             OnDie(EnemyDestroyType.Arrive);
         }
     }
@@ -59,11 +65,12 @@ public class Enemy : MonoBehaviour
     {
         if (enemySpawner == null)
         {
-            Debug.LogWarning("EnemySpawner is null in OnDie!");
+          
+
             return;
         }
 
-        enemySpawner.DestroyEnemy(type, this, gogi, planks, pb);
+        enemySpawner.DestroyEnemy(type, this, gogi, planks, pb, battery,tape,mt);
     }
 
     private void OnTriggerEnter2D(Collider2D collision)

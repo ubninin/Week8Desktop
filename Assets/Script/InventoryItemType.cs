@@ -4,5 +4,8 @@ public enum InventoryItemType
     Gogi,
     Planks,
     Shovel,
-    Pb
+    Pb,
+    Battery,
+    Tape,
+    Mt
 }

@@ -17,7 +17,8 @@ public class TowerSpawner : MonoBehaviour
 
         if (towerBuildPlanks > playerPlanks.CurrentPlanks)
         {
-            Debug.Log("당신은 거지입니다");
+       
+
             return;
         }
         isOnTowerButton = true;

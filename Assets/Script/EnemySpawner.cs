@@ -17,7 +17,12 @@ public class EnemySpawner : MonoBehaviour
     [SerializeField] private PlayerHP playerHP;
     [SerializeField] private PlayerGogi playerGogi;
     [SerializeField] private PlayerPb playerPb;
+
     [SerializeField] private PlayerPlanks playerPlanks;
+
+    [SerializeField] private PlayerBattery playerBattery;
+    [SerializeField] private PlayerTape playerTape;
+    [SerializeField] private PlayerMt playerMt;
     [SerializeField] private InventoryUI inventoryUI;
     private List<Enemy> enemyList;
     public List<Enemy> EnemyList => enemyList;
@@ -41,7 +46,7 @@ public class EnemySpawner : MonoBehaviour
             yield return new WaitForSeconds(spawnTime); // spawnTime 시간 동안 대기
         }
     }
-    public void DestroyEnemy(EnemyDestroyType type, Enemy enemy,int gogi, int planks, int pb)
+    public void DestroyEnemy(EnemyDestroyType type, Enemy enemy,int gogi, int planks, int pb, int battery, int tape, int mt)
     {
         if (type == EnemyDestroyType.PlayerCollision)
         {
@@ -51,35 +56,74 @@ public class EnemySpawner : MonoBehaviour
         {
             float chance = Random.value; // 0.0f ~ 1.0f 사이의 랜덤값
 
-            if (chance < 0.66f) // 66% 확률로 planks 지급
+            if (chance < 0.16f) //아이템 지급
             {
                 if (playerPlanks != null)
                 {
                     playerPlanks.CurrentPlanks += 1;
-                    Debug.Log("판자를 얻었다");
+                   
+
                     inventoryUI.AddItem(InventoryItemType.Planks);
                 }
                 else
                     Debug.LogWarning("playerPlanks is null!");
             }
-            else if (chance > 0.22f)//
+            else if (chance < 0.32f)//
             {
                 if (playerPb != null)
                 {
                     playerPb.CurrentPb += 1;
-                    Debug.Log("고기를 얻었다");
+                    Debug.Log("pb get");
                     inventoryUI.AddItem(InventoryItemType.Pb);
                 }
 
                 else
                     Debug.LogWarning("playerPb is null!");
             }
-            else // 34% 확률로 gogi 지급
+            else if (chance < 0.48f)//
+            {
+                if (playerBattery != null)
+                {
+                    playerBattery.CurrentBattery += 1;
+                  
+
+                    inventoryUI.AddItem(InventoryItemType.Battery);
+                }
+
+                else
+                    Debug.LogWarning("playerBattery is null!");
+            }
+            else if (chance < 0.64f)//
+            {
+                if (playerTape != null)
+                {
+                    playerTape.CurrentTape += 1;
+                    Debug.Log("Tape get");
+                    inventoryUI.AddItem(InventoryItemType.Tape);
+                }
+
+                else
+                    Debug.LogWarning("playerTape is null!");
+            }
+            else if (chance < 0.80f)//
+            {
+                if (playerMt != null)
+                {
+                    playerMt.CurrentMt += 1;
+                    Debug.Log("Mt get");
+                    inventoryUI.AddItem(InventoryItemType.Mt);
+                }
+
+                else
+                    Debug.LogWarning("playerMt is null!");
+            }
+            else 
             {
                 if (playerGogi != null)
                 {
                     playerGogi.CurrentGogi += 1;
-                    Debug.Log("고기를 얻었다");
+                    
+
                     inventoryUI.AddItem(InventoryItemType.Gogi);
                 }
 

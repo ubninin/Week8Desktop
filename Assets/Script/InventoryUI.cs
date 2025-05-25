@@ -9,6 +9,9 @@ public class InventoryUI : MonoBehaviour
     [SerializeField] private Sprite pbSprite;
     [SerializeField] private Sprite planksSprite;
     [SerializeField] private Sprite shovelSprite;
+    [SerializeField] private Sprite batterySprite;
+    [SerializeField] private Sprite tapeSprite;
+    [SerializeField] private Sprite mtSprite;
     [SerializeField] private PlayerPlanks playerPlanks;
     [SerializeField] private TowerSpawner towerSpawner;
     [SerializeField] private PlayerAttack playerAttack;
@@ -97,6 +100,9 @@ public class InventoryUI : MonoBehaviour
             case InventoryItemType.Pb: return pbSprite;
             case InventoryItemType.Planks: return planksSprite;
             case InventoryItemType.Shovel: return shovelSprite;
+            case InventoryItemType.Battery: return batterySprite;
+            case InventoryItemType.Tape: return tapeSprite;
+            case InventoryItemType.Mt: return mtSprite;
             default: return null;
         }
     }
