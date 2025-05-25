@@ -1115,7 +1115,7 @@ MonoBehaviour:
   obstacleLayer:
     serializedVersion: 2
     m_Bits: 256
-  shovelObject: {fileID: 0}
+  shovelObject: {fileID: 698021935}
 --- !u!1 &210362350
 GameObject:
   m_ObjectHideFlags: 0
@@ -4163,7 +4163,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: bedb59de549e82c4391a0288f44b3531, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  Planks: 5
+  Planks: 0
 --- !u!114 &1121107471
 MonoBehaviour:
   m_ObjectHideFlags: 0

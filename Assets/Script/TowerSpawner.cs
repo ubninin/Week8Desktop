@@ -21,7 +21,7 @@ public class TowerSpawner : MonoBehaviour
             return;
         }
         isOnTowerButton = true;
-        Debug.Log("설치한다");
+        
         //followTowerClone = Instantiate(towerTemplate[towerType].followTowerPrefab);
         //StartCoroutine("OnTowerCancelSystem");
     }
@@ -48,6 +48,7 @@ public class TowerSpawner : MonoBehaviour
         isOnTowerButton = false;
         tile.IsBuildTower = true;
         playerPlanks.CurrentPlanks -= towerBuildPlanks;
+
         if (inventoryUI != null)
         {
             inventoryUI.RemoveItem(InventoryItemType.Planks);
@@ -62,6 +63,11 @@ public class TowerSpawner : MonoBehaviour
         if (tower != null)
         {
             tower.SetTile(tile);
+        }
+        Obstacle obstacle = newTower.GetComponent<Obstacle>();
+        if (obstacle != null)
+        {
+            obstacle.SetTile(tile);
         }
     }
 

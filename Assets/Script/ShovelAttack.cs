@@ -14,7 +14,11 @@ public class ShovelAttack : MonoBehaviour
     private float attackDuration = 0.25f;
     private float maxAngle = -90f;
     private bool hitRegistered = false;
-
+    private Tile tile; // 타워가 위치한 타일 참조
+    public void SetTile(Tile tile)
+    {
+        this.tile = tile;
+    }
     void Update()
     {
 
@@ -72,9 +76,18 @@ public class ShovelAttack : MonoBehaviour
             }
             else
             {
+                // Obstacle이면서 적이 아닌 경우
+                Obstacle obstacle = hit.GetComponent<Obstacle>();
+                if (obstacle != null && obstacle.tile != null)
+                {
+                    obstacle.tile.IsBuildTower = false;
+                    Debug.Log("타일에 타워 없음으로 설정");
+                }
+
                 Destroy(hit.gameObject);
                 Debug.Log("적이 아님 → 파괴");
             }
+
         }
         else
         {
