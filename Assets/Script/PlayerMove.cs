@@ -2,6 +2,7 @@ using UnityEngine;
 
 public class PlayerMove : MonoBehaviour
 {
+    [SerializeField] private GameObject gameOverPanel;
     public enum PlayerState { Walk, Run, Jump }
 
     private PlayerState currentState = PlayerState.Walk;
@@ -104,7 +105,12 @@ public class PlayerMove : MonoBehaviour
             collision.gameObject.CompareTag("Water"))
         {
             if (collision.gameObject.CompareTag("Water"))
+            {
                 Debug.Log("game over (water)");
+                gameOverPanel.SetActive(true);
+                Time.timeScale = 0f;
+            }
+
 
             jumpCount = 0;
         }
